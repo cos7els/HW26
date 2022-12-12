@@ -16,13 +16,9 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String uname = req.getParameter("uname");
         String psw = req.getParameter("psw");
-        if (!uname.equalsIgnoreCase("") && !psw.equalsIgnoreCase("")) {
-            log(uname, psw);
-            req.setAttribute("uname", uname);
-            getServletContext().getRequestDispatcher("/welcome.jsp").forward(req, resp);
-        } else {
-            getServletContext().getRequestDispatcher("/index.html").include(req, resp);
-        }
+        req.setAttribute("uname", uname);
+        getServletContext().getRequestDispatcher("/welcome.jsp").forward(req, resp);
+        log(uname, psw);
     }
 
     private void log(String uname, String psw) {
